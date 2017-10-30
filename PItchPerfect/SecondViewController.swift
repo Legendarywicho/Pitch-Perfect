@@ -10,10 +10,16 @@ import UIKit
 
 class SecondViewController: UIViewController {
 
+    var Url: URL?;
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red;
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .white;
+        if Url != nil{
+            print(Url!);
+        }else{
+            print("I dind't got data");
+        }
     }
 
     override func didReceiveMemoryWarning() {

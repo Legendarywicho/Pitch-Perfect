@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  RecordSoundViewController.swift
 //  PItchPerfect
 //
 //  Created by Legendary Wicho on 10/3/17.
@@ -7,8 +7,13 @@
 //
 
 import UIKit
+import AVFoundation
 
-class ViewController: UIViewController {
+
+class RecordSoundViewController: UIViewController , AVAudioRecorderDelegate{
+    
+    var audioRecorder : AVAudioRecorder!;
+    var delegate : SoundProtocol?;
     
     let recordButton : UIButton = {
         let button = UIButton();
@@ -46,10 +51,10 @@ class ViewController: UIViewController {
         view.addSubview(textStatus);
         view.addSubview(stopRecordButton);
         setUpLayout();
+    
     }
     
     func setUpLayout(){
-        
         //Layout for recording button
         recordButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 100).isActive = true;
         recordButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true;
@@ -69,16 +74,55 @@ class ViewController: UIViewController {
     }
     
     @objc func onClickRecord(){
-        navigationController?.pushViewController(SecondViewController(), animated: true);
-        /*textStatus.text = "Recording";
+//        navigationController?.pushViewController(SecondViewController(), animated: true);
+        textStatus.text = "Recording";
         recordButton.isEnabled = false;
-        stopRecordButton.isEnabled = true;*/
+        stopRecordButton.isEnabled = true;
+        startRecording();
     }
     
     @objc func onStopClick(){
-//        textStatus.text = "Click to record";
-//        recordButton.isEnabled = true;
-//        stopRecordButton.isEnabled = false;
+        textStatus.text = "Click to record";
+        recordButton.isEnabled = true;
+        stopRecordButton.isEnabled = false;
+        stopRecording();
+    }
+    
+    func startRecording(){
+        let dirName = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String;
+        let recordingName = "recordedVoice.wav";
+        let pathArray = [dirName, recordingName];
+        
+        let filePath = URL(fileURLWithPath: pathArray.joined(separator: "/"));
+//        print(filePath);
+        let session = AVAudioSession.sharedInstance();
+        try! session.setCategory(AVAudioSessionCategoryPlayAndRecord, with : AVAudioSessionCategoryOptions.defaultToSpeaker);
+        
+        //Preparing audio recorder to start recording.
+        try! audioRecorder = AVAudioRecorder(url: filePath, settings: [:]);
+        audioRecorder.isMeteringEnabled = true;
+        audioRecorder.delegate = self;
+        audioRecorder.prepareToRecord();
+        audioRecorder.record();
+    }
+    
+    func stopRecording(){
+        audioRecorder.stop();
+        let audioSession = AVAudioSession.sharedInstance();
+        try! audioSession.setActive(false);
+    }
+    
+    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
+        //Check if our audio is sucessfully recorded.
+        if(flag){
+            let pathToData = audioRecorder.url;
+            let secondScreen = SecondViewController();
+            secondScreen.Url = pathToData;
+            navigationController?.pushViewController(secondScreen, animated: true);
+        }else{
+            //TODO send a dialogue that it couln't been done
+            print("Didn't recorded audio file");
+        }
     }
 }
 
