@@ -13,7 +13,7 @@ import AVFoundation
 class RecordSoundViewController: UIViewController , AVAudioRecorderDelegate{
     
     var audioRecorder : AVAudioRecorder!;
-    var delegate : SoundProtocol?;
+    
     
     let recordButton : UIButton = {
         let button = UIButton();
@@ -56,9 +56,8 @@ class RecordSoundViewController: UIViewController , AVAudioRecorderDelegate{
     
     func setUpLayout(){
         //Layout for recording button
-        recordButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 100).isActive = true;
         recordButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true;
-        recordButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true;
+        recordButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant : -40).isActive = true;
         recordButton.heightAnchor.constraint(equalToConstant: 200).isActive = true;
         
         //Layout for textview
@@ -117,12 +116,14 @@ class RecordSoundViewController: UIViewController , AVAudioRecorderDelegate{
         if(flag){
             let pathToData = audioRecorder.url;
             let secondScreen = SecondViewController();
-            secondScreen.Url = pathToData;
+            secondScreen.recordedAudioURL = pathToData;
             navigationController?.pushViewController(secondScreen, animated: true);
         }else{
             //TODO send a dialogue that it couln't been done
             print("Didn't recorded audio file");
         }
     }
+    
+   
 }
 

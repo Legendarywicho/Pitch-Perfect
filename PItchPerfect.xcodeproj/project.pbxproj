@@ -11,8 +11,6 @@
 		581C87621F8356BA00CD4CF5 /* RecordSoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581C87611F8356BA00CD4CF5 /* RecordSoundViewController.swift */; };
 		581C87671F8356BA00CD4CF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 581C87661F8356BA00CD4CF5 /* Assets.xcassets */; };
 		B82BBD3C1FA7F132002AEFCE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B82BBD3B1FA7F132002AEFCE /* AudioToolbox.framework */; };
-		B87D2B5E1FA6AB38000EA26E /* SoundProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87D2B5D1FA6AB38000EA26E /* SoundProtocol.swift */; };
-		B87D2B601FA6E327000EA26E /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B87D2B5F1FA6E327000EA26E /* Storyboard.storyboard */; };
 		B8E1CF2E1FA6704800AAE499 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E1CF2D1FA6704800AAE499 /* SecondViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -24,8 +22,6 @@
 		581C876B1F8356BA00CD4CF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B82BBD391FA7F132002AEFCE /* PItchPerfect.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PItchPerfect.entitlements; sourceTree = "<group>"; };
 		B82BBD3B1FA7F132002AEFCE /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		B87D2B5D1FA6AB38000EA26E /* SoundProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundProtocol.swift; sourceTree = "<group>"; };
-		B87D2B5F1FA6E327000EA26E /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		B8E1CF2D1FA6704800AAE499 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -44,7 +40,6 @@
 		581C87531F8356BA00CD4CF5 = {
 			isa = PBXGroup;
 			children = (
-				B87D2B5F1FA6E327000EA26E /* Storyboard.storyboard */,
 				581C875E1F8356BA00CD4CF5 /* PItchPerfect */,
 				581C875D1F8356BA00CD4CF5 /* Products */,
 				B82BBD3A1FA7F132002AEFCE /* Frameworks */,
@@ -62,13 +57,11 @@
 		581C875E1F8356BA00CD4CF5 /* PItchPerfect */ = {
 			isa = PBXGroup;
 			children = (
+				B8B8C40C1FAAC67000653486 /* src */,
+				B8B8C40B1FAAC66200653486 /* Delegate */,
 				B82BBD391FA7F132002AEFCE /* PItchPerfect.entitlements */,
-				581C875F1F8356BA00CD4CF5 /* AppDelegate.swift */,
-				581C87611F8356BA00CD4CF5 /* RecordSoundViewController.swift */,
 				581C87661F8356BA00CD4CF5 /* Assets.xcassets */,
 				581C876B1F8356BA00CD4CF5 /* Info.plist */,
-				B8E1CF2D1FA6704800AAE499 /* SecondViewController.swift */,
-				B87D2B5D1FA6AB38000EA26E /* SoundProtocol.swift */,
 			);
 			path = PItchPerfect;
 			sourceTree = "<group>";
@@ -79,6 +72,31 @@
 				B82BBD3B1FA7F132002AEFCE /* AudioToolbox.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B8B8C40B1FAAC66200653486 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				581C875F1F8356BA00CD4CF5 /* AppDelegate.swift */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		B8B8C40C1FAAC67000653486 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				B8B8C40D1FAAC68900653486 /* extentions */,
+				581C87611F8356BA00CD4CF5 /* RecordSoundViewController.swift */,
+				B8E1CF2D1FA6704800AAE499 /* SecondViewController.swift */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		B8B8C40D1FAAC68900653486 /* extentions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = extentions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,7 +166,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				581C87671F8356BA00CD4CF5 /* Assets.xcassets in Resources */,
-				B87D2B601FA6E327000EA26E /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,7 +177,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8E1CF2E1FA6704800AAE499 /* SecondViewController.swift in Sources */,
-				B87D2B5E1FA6AB38000EA26E /* SoundProtocol.swift in Sources */,
 				581C87621F8356BA00CD4CF5 /* RecordSoundViewController.swift in Sources */,
 				581C87601F8356BA00CD4CF5 /* AppDelegate.swift in Sources */,
 			);
